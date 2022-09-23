@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ListDataService } from './services/list.data.service';
+import { Store } from '@ngrx/store';
+import { ListActions } from './actions/list.action.types';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,9 @@ import { ListDataService } from './services/list.data.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private listDataService: ListDataService) {}
+  constructor(private store: Store) {}
   ngOnInit(): void {
-    this.listDataService.getListData$();
+    this.store.dispatch(ListActions.loadAllListsActionCreator());
   }
 
-  
-
-  
 }

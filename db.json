@@ -2,18 +2,22 @@
   "list": [
       { 
           "date": "1-1-2000",
+          "id": 1,
           "name": "json-server",
           "actions": ["mail", "share", "edit", "delete"], 
           "details": ["detail 1"]
       },
       { 
-          "date": "1-1-2000",
+          "date": "1-1-2001",
+          "id": 2,
           "name": "json-server", 
           "actions": ["mail", "share", "edit", "delete"], 
-          "details": ["detail 1"]
+          "details": ["detail 1"],
+          "selected": true
       },
       { 
-          "date": "1-1-2000",
+          "date": "1-1-2002",
+          "id": 3,
           "name": "json-server", 
           "actions": ["mail", "share", "edit", "delete"], 
           "details": ["detail 1", "detail 2"]
