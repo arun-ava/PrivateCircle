@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { listsFeatureSelector } from '../../selectors/list.selector';
-import { Observable } from 'rxjs';
+import { processedListsSelector, selectedListDescriptionsSelector } from '../../selectors/list.selector';
+import { Observable, filter } from 'rxjs';
 import { List } from '../../models/list.model';
 import { ListActions } from 'src/app/actions/list.action.types';
+import { tableFeatureSelector, tableFilterSelector } from '../../selectors/table.selector';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-lists',
@@ -13,6 +15,7 @@ import { ListActions } from 'src/app/actions/list.action.types';
 export class ListsComponent implements OnInit {
 
   datasource!: Observable<List[]>;
+  matdatasource!: MatTableDataSource<List[]>;
   dataColumns = ['date', 'name'];
   displayedHeaders : { [key: string]: string } = {
     date: 'Date',
@@ -22,14 +25,20 @@ export class ListsComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.datasource = this.store.select(listsFeatureSelector);
+    this.store.select(processedListsSelector).subscribe((val) => {
+      this.matdatasource = new MatTableDataSource<List[]>(val as any); // todo: remove any
+    })
+
+    this.store.select(tableFilterSelector).subscribe((val) => {
+      this.matdatasource.filter = val; // todo: filtering only for displayed columns
+    });
   }
 
   handleRowClick($event: any, row: List) {
-    console.log('event: any, row:', $event, row);
     this.store.dispatch(ListActions.selectListActionCreator({
       id: row.id
     }));
   }
+
 
 }

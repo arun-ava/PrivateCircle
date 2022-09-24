@@ -1,4 +1,27 @@
-<div style="display: flex; flex-flow:row;">
-    <app-lists style='flex-grow: 5'></app-lists>
-    <app-descriptions style='flex-grow: 2'></app-descriptions>
-</div>
+<mat-form-field appearance="standard">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+</mat-form-field>
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon aria-hidden="false" fontIcon="list"></mat-icon>
+            SAVED LISTS
+        </ng-template>
+        <div style="display: flex; flex-flow:row;">
+            <app-lists style='flex-grow: 5'></app-lists>
+            <app-descriptions style='flex-grow: 2'></app-descriptions>
+        </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon aria-hidden="false" fontIcon="filter_list"></mat-icon>
+            SAVED FILTERS
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon aria-hidden="false" fontIcon="history"></mat-icon>
+            SEARCH HISTORY
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
