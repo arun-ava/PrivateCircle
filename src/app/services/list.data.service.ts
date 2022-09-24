@@ -15,7 +15,17 @@ export class ListDataService {
 
     getListData$(): Observable<List[]> {
         return this._httpClient.get(this.server_url+'list').pipe(map((val, index) => {
-            return val as List[]; //TODO : find better than this
+            return (val as Array<any>).map((jsonval) => {
+                return {
+                    id: jsonval.id,
+                    name: jsonval.name,
+                    selected: jsonval['selected'],
+                    actions: jsonval.actions,
+                    details: jsonval.details,
+                    date: jsonval.date,
+                } as List
+            });
+            
         }));
     }
 

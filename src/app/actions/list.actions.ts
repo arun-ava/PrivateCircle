@@ -10,7 +10,7 @@ export const allListsLoadedActionCreator = createAction(
     props<{lists: List[]}>()
 );
 
-export const selectList = createAction(
+export const selectListActionCreator = createAction(
     '[Lists View] SelectList',
     props<{id: number}>()
 );

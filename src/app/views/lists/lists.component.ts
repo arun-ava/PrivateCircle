@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { listsFeatureSelector, selectedListSelector } from '../../selectors/list.selector';
-import { MatTableDataSource } from '@angular/material/table';
+import { listsFeatureSelector } from '../../selectors/list.selector';
+import { Observable } from 'rxjs';
 import { List } from '../../models/list.model';
+import { ListActions } from 'src/app/actions/list.action.types';
 
 @Component({
   selector: 'app-lists',
@@ -11,19 +12,24 @@ import { List } from '../../models/list.model';
 })
 export class ListsComponent implements OnInit {
 
-  // datasource!: MatTableDataSource<List[]>;
-  datasource!: any;
-  datasource2!: any;
-  displayedColumns = ['date', 'name'];
+  datasource!: Observable<List[]>;
+  dataColumns = ['date', 'name'];
+  displayedHeaders : { [key: string]: string } = {
+    date: 'Date',
+    name: 'Name',
+  };
+  displayedColumns = [...this.dataColumns, 'actions']
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-
     this.datasource = this.store.select(listsFeatureSelector);
-    // .subscribe((val) => {
-    //   this.datasource2 = val;
-    //   console.log('feature selector value is ', val);
-    // })
+  }
+
+  handleRowClick($event: any, row: List) {
+    console.log('event: any, row:', $event, row);
+    this.store.dispatch(ListActions.selectListActionCreator({
+      id: row.id
+    }));
   }
 
 }

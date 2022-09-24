@@ -11,11 +11,14 @@ import { ListsComponent } from './views/lists/lists.component';
 import { CommonModule } from '@angular/common';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+import { DescriptionsComponent } from './views/descriptions/descriptions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListsComponent
+    ListsComponent,
+    DescriptionsComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
     AppRoutingModule,
     CdkTableModule,
     MatTableModule,
+    MatListModule,
     HttpClientModule,
     StoreModule.forRoot({
       lists: listReducer

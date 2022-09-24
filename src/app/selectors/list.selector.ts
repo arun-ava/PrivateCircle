@@ -3,11 +3,11 @@ import { List } from '../models/list.model';
 
 export const listsFeatureSelector = createFeatureSelector<List[]>('lists');
 
-export const selectedListSelector  = createSelector(
+export const selectedListDescriptionsSelector  = createSelector(
     listsFeatureSelector,
     (lists) => {
         return lists.find((val) => {
             return val.selected === true;
-        });
+        })?.details;
     }
 );
