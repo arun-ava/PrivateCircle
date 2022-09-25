@@ -1,6 +1,6 @@
 # PrivateCircle
 
-SPA made with
+SPA made for interview in PrivateCircle
 
 ## Development server
 
