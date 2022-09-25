@@ -1,7 +1,6 @@
 {
   "list": [
       { 
-          "date": "1-1-2000",
           "id": 1,
           "name": "json-server",
           "actions": ["mail", "share", "edit", "delete"], 
@@ -11,28 +10,26 @@
           "date": "1-1-2001",
           "id": 2,
           "name": "json-server", 
-          "actions": ["mail", "share", "edit", "delete"], 
+          "actions": ["mail", "delete"], 
           "details": ["detail 1"]
       },
       { 
           "date": "1-1-2002",
           "id": 3,
           "name": "json-server", 
-          "actions": ["mail", "share", "edit", "delete"], 
+          "actions": ["share", "edit", "delete"], 
           "details": ["detail 1", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2", "detail 2"]
       },
       { 
           "date": "1-1-2002",
           "id": 4,
           "name": "json-server", 
-          "actions": ["mail", "share", "edit", "delete"], 
           "details": ["detail 1", "detail 2"]
       },
       { 
           "date": "1-1-2002",
           "id": 5,
           "name": "json-server", 
-          "actions": ["mail", "share", "edit", "delete"], 
           "details": ["detail 1", "detail 2"]
       },
       { 
@@ -81,14 +78,14 @@
           "date": "1-1-2002",
           "id": 12,
           "name": "json-server", 
-          "actions": ["mail", "share", "edit", "delete"], 
+          "actions": ["share", "delete"], 
           "details": ["detail 1", "detail 2"]
       },
       { 
           "date": "1-1-2002",
           "id": 13,
           "name": "json-server", 
-          "actions": ["mail", "share", "edit", "delete"], 
+          "actions": ["mail", "share"], 
           "details": ["detail 1", "detail 2"]
       },
       { 
@@ -102,7 +99,7 @@
           "date": "1-1-2002",
           "id": 15,
           "name": "json-server", 
-          "actions": ["mail", "share", "edit", "delete"], 
+          "actions": ["edit", "delete"], 
           "details": ["detail 1", "detail 2"]
       },
       { 

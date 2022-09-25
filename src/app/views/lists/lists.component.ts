@@ -33,7 +33,9 @@ export class ListsComponent implements OnInit {
         this.dataColumns.forEach((col : string) => {
           res[col] = (valinner as any)[col]; // todo: remove any
         });
+        res.actions = valinner?.actions;
         res['entityCount'] = valinner.details?.length > 0 ? valinner.details.length : '';
+        res['id'] = valinner.id; // TODO: Filter without using matdatasource to remove id
         return res;
       })); 
     })
