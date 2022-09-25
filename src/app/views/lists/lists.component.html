@@ -1,15 +1,32 @@
-<table mat-table [dataSource]="matdatasource" class="mat-elevation-z8">
+<div class='sub-view-height-styles'>
+  <table style="width: 100%; height: auto;" mat-table [dataSource]="matdatasource" class="mat-elevation-z8">
 
     <ng-container *ngFor="let column of dataColumns" [matColumnDef]=column>
       <th mat-header-cell *matHeaderCellDef="let element"> {{displayedHeaders[column]}} </th>
       <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="entityCount">
+      <th mat-header-cell *matHeaderCellDef>{{displayedHeaders['entityCount']}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.entityCount}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>{{displayedHeaders['actions']}}</th>
+      <td mat-cell *matCellDef="let element"> 
+        <mat-icon fontIcon="mail" class = 'icon-color'></mat-icon>
+        <mat-icon fontIcon="share" class = 'icon-color'></mat-icon>
+        <mat-icon fontIcon="edit" class = 'icon-color'></mat-icon>
+        <mat-icon fontIcon="delete" class = 'icon-color'></mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element"> <button (click)="handleRowClick($event, element)">click</button> </td>
+      <td mat-cell *matCellDef="let element"> <button mat-button (click)="handleRowClick($event, element)">Details</button> </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+</div>

@@ -19,14 +19,23 @@ export class ListsComponent implements OnInit {
   dataColumns = ['date', 'name'];
   displayedHeaders : { [key: string]: string } = {
     date: 'Date',
-    name: 'Name',
+    name: 'List Name',
+    entityCount: 'No. of Entities',
+    actions: 'Actions'
   };
-  displayedColumns = [...this.dataColumns, 'actions']
+  displayedColumns = [...this.dataColumns, 'entityCount', 'actions', 'details'];
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.store.select(processedListsSelector).subscribe((val) => {
-      this.matdatasource = new MatTableDataSource<List[]>(val as any); // todo: remove any
+    this.store.select(processedListsSelector).subscribe((val: List[]) => {
+      this.matdatasource = new MatTableDataSource<List[]>(val.map((valinner: List) => {
+        let res: any = {};
+        this.dataColumns.forEach((col : string) => {
+          res[col] = (valinner as any)[col]; // todo: remove any
+        });
+        res['entityCount'] = valinner.details?.length > 0 ? valinner.details.length : '';
+        return res;
+      })); 
     })
 
     this.store.select(tableFilterSelector).subscribe((val) => {

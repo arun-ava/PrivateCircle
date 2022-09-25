@@ -10,6 +10,7 @@ import { TableActions } from './actions/table.action.types';
 })
 export class AppComponent implements OnInit {
 
+  selectedView!: number;
   constructor(private store: Store) {}
   ngOnInit(): void {
     this.store.dispatch(ListActions.loadAllListsActionCreator());

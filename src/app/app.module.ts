@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  HttpClientModule } from '@angular/common/http';
@@ -17,8 +18,11 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DescriptionsComponent } from './views/descriptions/descriptions.component';
 import { tableReducer } from './reducers/table.reducer';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -31,14 +35,18 @@ import { tableReducer } from './reducers/table.reducer';
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
+    FormsModule, 
     CdkTableModule,
     MatTableModule,
     MatListModule,
     MatTabsModule,
     MatIconModule,
+    MatButtonToggleModule,
     HttpClientModule,
+    MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    MatToolbarModule,
     StoreModule.forRoot({
       lists: listReducer,
       table: tableReducer,

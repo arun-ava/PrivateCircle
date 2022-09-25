@@ -1,5 +1,15 @@
-<mat-list>
-    <mat-list-item *ngFor="let description of descriptions | async">
-        {{description}}
-    </mat-list-item>
-</mat-list>
+
+<div class='sub-view-height-styles' style="padding: 20px;">
+    <mat-form-field style=" width: 100%; background-color: #F0F0F0;" appearance="fill">
+        <!-- <mat-label>Add Desc</mat-label> -->
+        <input  matInput placeholder="No Description Yet" type="text">
+        <button matSuffix mat-button>
+            +Add Description
+        </button>
+    </mat-form-field>
+    <mat-list style="width: 100%;">
+        <mat-list-item style="color: rgb(66, 66, 255);" *ngFor="let description of descriptions | async">
+            {{description}}
+        </mat-list-item>
+    </mat-list>
+</div>

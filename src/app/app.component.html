@@ -1,27 +1,26 @@
-<mat-form-field appearance="standard">
-    <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
-</mat-form-field>
-<mat-tab-group>
-    <mat-tab>
-        <ng-template mat-tab-label>
+<mat-toolbar style="background: #EEEBEB; height: 70px; display: flex;"> 
+    <mat-button-toggle-group [(ngModel)]="selectedView" aria-label="Font Style" style="flex-grow: 13;">
+        <mat-button-toggle value=1 [checked]="true">
             <mat-icon aria-hidden="false" fontIcon="list"></mat-icon>
             SAVED LISTS
-        </ng-template>
-        <div style="display: flex; flex-flow:row;">
-            <app-lists style='flex-grow: 5'></app-lists>
-            <app-descriptions style='flex-grow: 2'></app-descriptions>
-        </div>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
+        </mat-button-toggle>
+        <mat-button-toggle value=2>
             <mat-icon aria-hidden="false" fontIcon="filter_list"></mat-icon>
             SAVED FILTERS
-        </ng-template>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
+        </mat-button-toggle>
+        <mat-button-toggle value=3>
             <mat-icon aria-hidden="false" fontIcon="history"></mat-icon>
             SEARCH HISTORY
-        </ng-template>
-    </mat-tab>
-</mat-tab-group>
+        </mat-button-toggle>
+    </mat-button-toggle-group> 
+    <!-- <span class="spacer"></span> -->
+    <mat-form-field style="width: 40vw; flex-grow: 3;" class='custom-form-field' appearance="outline">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+    </mat-form-field>   
+</mat-toolbar>
+
+<!-- TODO : Why selectedView===1 not working??-->
+<div *ngIf="selectedView==1" style="display: flex; flex-flow:row;" > 
+    <app-lists style='flex-grow: 15;'></app-lists>
+    <app-descriptions style='flex-grow: 2;'></app-descriptions>
+</div>
